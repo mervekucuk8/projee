@@ -37,7 +37,7 @@ namespace _10019SelahattinSaylam
         }
         public void rehber_DataGridDoldur()//datagrid doldur.
         {
-
+           
             vv02_str_komut_yazisi = "select " +
                  "ss_id," +
                   "ss_ad," +
@@ -46,12 +46,13 @@ namespace _10019SelahattinSaylam
                   "ss_tur" +
                   " from SS_Rehber";
 
-
+            
             vv03_con_baglanti1 = new SqlConnection(vv01_str_veritabani_yolu);
             vv04_cmd_komut1 = new SqlCommand(vv02_str_komut_yazisi, vv03_con_baglanti1);
             vv06_adp_adaptor1 = new SqlDataAdapter(vv04_cmd_komut1);
             vv07_tbl_tablo1 = new DataTable();
             vv06_adp_adaptor1.Fill(vv07_tbl_tablo1);
+           
         }
 
         private void metroLink1_Click(object sender, EventArgs e)
@@ -104,7 +105,7 @@ namespace _10019SelahattinSaylam
                   "@ss_tel_no," +
                   "@ss_tur" +
                   ")";
-
+               
                 vv03_con_baglanti1 = new SqlConnection(vv01_str_veritabani_yolu);
                 vv04_cmd_komut1 = new SqlCommand(vv02_str_komut_yazisi, vv03_con_baglanti1);
                 vv04_cmd_komut1.Parameters.AddWithValue("@ss_ad", aa.ssrehber_01_ad_str);
@@ -118,6 +119,7 @@ namespace _10019SelahattinSaylam
                 vv04_cmd_komut1.Dispose();
                 vv03_con_baglanti1.Close();
                 rehber_DataGridDoldur();
+               
                 MessageBox.Show("Kayıt edilmiştir.");
                
             }

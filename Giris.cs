@@ -37,8 +37,8 @@ namespace _10019SelahattinSaylam
     struct ssmat_islemi
     {
         public int ssrehber_00_id_int;
-        public string ssmat_01_sayi1_int;
-        public string ssmat_02_sayi2_int;
+        public int ssmat_01_puan_int;
+        
     }
 
     public partial class Giris : MetroForm
