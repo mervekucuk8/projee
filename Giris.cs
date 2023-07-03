@@ -24,6 +24,8 @@ namespace _10019SelahattinSaylam
         public string sskullanici_05_sifre_str;
         public int sskullanici_06_yas_int;
         public string sskullanici_07_cinsiyet_str;
+        public string sskullanici_08_ss_email_str;
+        public string sskullanici_09_ss_adres_str;
     }
     struct ssrehber_islemi
     {
@@ -50,7 +52,7 @@ namespace _10019SelahattinSaylam
 
         private void Giris_Load(object sender, EventArgs e)
         {
-            metroTextBox2.PasswordChar = '*';
+            SSmetroTextBox2.PasswordChar = '*';
 
             Random rastgele = new Random();
             string harfler = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz0123456789*#!><,.";
@@ -59,14 +61,14 @@ namespace _10019SelahattinSaylam
             {
                 uret += harfler[rastgele.Next(harfler.Length)];
             }
-            metroLabel4.Text=uret;
+            SSmetroLabel4.Text=uret;
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
             SqlConnection vv03_con_baglanti1 = new SqlConnection(@"Data Source=.;Initial Catalog=SS_uygulama;Integrated Security=True");
             //sql bağlantıyı sağladık
-            SqlCommand vv04_cmd_komut1 = new SqlCommand("select * from SS_Kullanici where ss_kullanici_adi='" + metroTextBox1.Text + "' and ss_sifre ='" + metroTextBox2.Text + "'", vv03_con_baglanti1);
+            SqlCommand vv04_cmd_komut1 = new SqlCommand("select * from SS_Kullanici where ss_kullanici_adi='" + SSmetroTextBox1.Text + "' and ss_sifre ='" + SSmetroTextBox2.Text + "'", vv03_con_baglanti1);
             //sql komutumuzu yazdık komutta veritabanındaki giris tablosunda kullanıcı adı textbox1.text olan şifresi textbox2.text olan veriyi
             // çekmesini istedik
             vv03_con_baglanti1.Open();//bağlantıyı açdık
@@ -74,7 +76,7 @@ namespace _10019SelahattinSaylam
             SqlDataReader vv05_rdr_okuyucu1 = vv04_cmd_komut1.ExecuteReader();//veriyi okutma emrini verdik
             if (vv05_rdr_okuyucu1.Read())//if eğer veriyi okumuşsa yani böyle bir kullanıcı veritabanında kayıtlıysa
             {
-                if (metroTextBox3.Text==metroLabel4.Text )
+                if (SSmetroTextBox3.Text==SSmetroLabel4.Text )
                 {
                     MessageBox.Show("Giriş Başarılı !");//giriş başarılı diye uyari verir
                     vv03_con_baglanti1.Close();//bağlantıyı kapar
@@ -91,10 +93,10 @@ namespace _10019SelahattinSaylam
             else
             {
                 MessageBox.Show("Kullanıcı Adınız Yada Şifreniz Yanlış !");//hayır veri okuyamadıysa uyarı verir
-                metroTextBox1.Text = "";//verileri temizler
-                metroTextBox2.Text = "";//verileri temizler
-                metroTextBox3.Text = "";//verileri temizler
-                metroLabel4.Text = "";
+                SSmetroTextBox1.Text = "";//verileri temizler
+                SSmetroTextBox2.Text = "";//verileri temizler
+                SSmetroTextBox3.Text = "";//verileri temizler
+                SSmetroLabel4.Text = "";
 
                 Random rastgele = new Random();
                 string harfler = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz0123456789*#!><,.";
@@ -103,7 +105,7 @@ namespace _10019SelahattinSaylam
                 {
                     uret += harfler[rastgele.Next(harfler.Length)];
                 }
-                metroLabel4.Text = uret;
+                SSmetroLabel4.Text = uret;
             }
         }
 

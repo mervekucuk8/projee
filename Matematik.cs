@@ -23,7 +23,7 @@ namespace _10019SelahattinSaylam
 
         private void Matematik_Load(object sender, EventArgs e)
         {
-            metroButton1.Enabled= false;
+            SSmetroButton1.Enabled= false;
            
 
           
@@ -51,36 +51,36 @@ namespace _10019SelahattinSaylam
             int toplam, cıkar, carp, böl;
             int a, b;
 
-            metroTextBox1.Text = rand_num.ToString();
-            metroTextBox2.Text = rand_num2.ToString();
-            metroTextBox10.Text = islem.ToString();
+            SSmetroTextBox1.Text = rand_num.ToString();
+            SSmetroTextBox2.Text = rand_num2.ToString();
+            SSmetroTextBox10.Text = islem.ToString();
 
-            a = Convert.ToInt32(metroTextBox1.Text);
-            b = Convert.ToInt32(metroTextBox2.Text);
+            a = Convert.ToInt32(SSmetroTextBox1.Text);
+            b = Convert.ToInt32(SSmetroTextBox2.Text);
 
             if (islem == 1)
             {
-                metroTextBox10.Text = "+";
+                SSmetroTextBox10.Text = "+";
                 toplam = a + b;
-                metroTextBox13.Text = toplam.ToString();
+                SSmetroTextBox13.Text = toplam.ToString();
             }
             else if (islem == 2)
             {
-                metroTextBox10.Text = "-";
+                SSmetroTextBox10.Text = "-";
                 cıkar = a - b;
-                metroTextBox13.Text = cıkar.ToString();
+                SSmetroTextBox13.Text = cıkar.ToString();
             }
             else if (islem == 3)
             {
-                metroTextBox10.Text = "*";
+                SSmetroTextBox10.Text = "*";
                 carp = a * b;
-                metroTextBox13.Text = carp.ToString();
+                SSmetroTextBox13.Text = carp.ToString();
             }
             else if (islem == 4)
             {
-                metroTextBox10.Text = "/";
+                SSmetroTextBox10.Text = "/";
                 böl = a / b;
-                metroTextBox13.Text = böl.ToString();
+                SSmetroTextBox13.Text = böl.ToString();
             }
         }
         public void orta_random_sayi_olustur()
@@ -92,36 +92,36 @@ namespace _10019SelahattinSaylam
             int toplam, cıkar, carp, böl;
             int a, b;
 
-            metroTextBox1.Text = rand_num.ToString();
-            metroTextBox2.Text = rand_num2.ToString();
-            metroTextBox10.Text = islem.ToString();
+            SSmetroTextBox1.Text = rand_num.ToString();
+            SSmetroTextBox2.Text = rand_num2.ToString();
+            SSmetroTextBox10.Text = islem.ToString();
 
-            a = Convert.ToInt32(metroTextBox1.Text);
-            b = Convert.ToInt32(metroTextBox2.Text);
+            a = Convert.ToInt32(SSmetroTextBox1.Text);
+            b = Convert.ToInt32(SSmetroTextBox2.Text);
 
             if (islem == 1)
             {
-                metroTextBox10.Text = "+";
+                SSmetroTextBox10.Text = "+";
                 toplam = a + b;
-                metroTextBox13.Text = toplam.ToString();
+                SSmetroTextBox13.Text = toplam.ToString();
             }
             else if (islem == 2)
             {
-                metroTextBox10.Text = "-";
+                SSmetroTextBox10.Text = "-";
                 cıkar = a - b;
-                metroTextBox13.Text = cıkar.ToString();
+                SSmetroTextBox13.Text = cıkar.ToString();
             }
             else if (islem == 3)
             {
-                metroTextBox10.Text = "*";
+                SSmetroTextBox10.Text = "*";
                 carp = a * b;
-                metroTextBox13.Text = carp.ToString();
+                SSmetroTextBox13.Text = carp.ToString();
             }
             else if (islem == 4)
             {
-                metroTextBox10.Text = "/";
+                SSmetroTextBox10.Text = "/";
                 böl = a / b;
-                metroTextBox13.Text = böl.ToString();
+                SSmetroTextBox13.Text = böl.ToString();
             }
 
         }
@@ -135,75 +135,75 @@ namespace _10019SelahattinSaylam
             int toplam, cıkar, carp, böl;
             int a, b;
 
-            metroTextBox1.Text = rand_num.ToString();
-            metroTextBox2.Text = rand_num2.ToString();
-            metroTextBox10.Text = islem.ToString();
+            SSmetroTextBox1.Text = rand_num.ToString();
+            SSmetroTextBox2.Text = rand_num2.ToString();
+            SSmetroTextBox10.Text = islem.ToString();
 
-            a = Convert.ToInt32(metroTextBox1.Text);
-            b = Convert.ToInt32(metroTextBox2.Text);
+            a = Convert.ToInt32(SSmetroTextBox1.Text);
+            b = Convert.ToInt32(SSmetroTextBox2.Text);
 
             if (islem == 1)
             {
-                metroTextBox10.Text = "+";
+                SSmetroTextBox10.Text = "+";
                 toplam = a + b;
-                metroTextBox13.Text = toplam.ToString();
+                SSmetroTextBox13.Text = toplam.ToString();
             }
             else if (islem == 2)
             {
-                metroTextBox10.Text = "-";
+                SSmetroTextBox10.Text = "-";
                 cıkar = a - b;
-                metroTextBox13.Text = cıkar.ToString();
+                SSmetroTextBox13.Text = cıkar.ToString();
             }
             else if (islem == 3)
             {
-                metroTextBox10.Text = "*";
+                SSmetroTextBox10.Text = "*";
                 carp = a * b;
-                metroTextBox13.Text = carp.ToString();
+                SSmetroTextBox13.Text = carp.ToString();
             }
             else if (islem == 4)
             {
-                metroTextBox10.Text = "/";
+                SSmetroTextBox10.Text = "/";
                 böl = a / b;
-                metroTextBox13.Text = böl.ToString();
+                SSmetroTextBox13.Text = böl.ToString();
             }
 
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            metroButton1.Enabled = false;
-            metroButton2.Enabled = true;
+            SSmetroButton1.Enabled = false;
+            SSmetroButton2.Enabled = true;
          
-            if (metroTextBox13.Text==metroTextBox9.Text)
+            if (SSmetroTextBox13.Text==SSmetroTextBox9.Text)
             {
                 puan =puan + 10;
-                metroTextBox11.Text = puan.ToString();
+                SSmetroTextBox11.Text = puan.ToString();
             }
             else
             {
                 puan=puan - 10;
-                metroTextBox11.Text = puan.ToString();  
+                SSmetroTextBox11.Text = puan.ToString();  
             }
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            metroButton2.Enabled = false;
-            metroButton1.Enabled = true;
-            metroTextBox9.Text = "";
+            SSmetroButton2.Enabled = false;
+            SSmetroButton1.Enabled = true;
+            SSmetroTextBox9.Text = "";
             
 
-            if (metroComboBox1.SelectedIndex==0)
+            if (SSmetroComboBox1.SelectedIndex==0)
             {
                 kolay_random_sayi_olustur();
 
             }
-            else if (metroComboBox1.SelectedIndex == 1)
+            else if (SSmetroComboBox1.SelectedIndex == 1)
             {
                 orta_random_sayi_olustur();
 
             }
-            else if (metroComboBox1.SelectedIndex==2)
+            else if (SSmetroComboBox1.SelectedIndex==2)
             {
                 zor_random_sayi_olustur();
             }

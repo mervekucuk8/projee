@@ -67,19 +67,19 @@ namespace _10019SelahattinSaylam
 
       
            
-            SqlCommand vv04_cmd_komut1 = new SqlCommand("select * from SS_Rehber where ss_tel_no='" + metroTextBox3.Text+"'", vv03_con_baglanti1);
+            SqlCommand vv04_cmd_komut1 = new SqlCommand("select * from SS_Rehber where ss_tel_no='" + SSmetroTextBox3.Text+"'", vv03_con_baglanti1);
             vv03_con_baglanti1.Open();//bağlantıyı açdık
             SqlDataReader vv05_rdr_okuyucu1 = vv04_cmd_komut1.ExecuteReader();//veriyi okutma emrini verdik
             if (vv05_rdr_okuyucu1.Read())//if eğer veriyi okumuşsa yani böyle bir kullanıcı veritabanında kayıtlıysa
             {
                 MessageBox.Show("Telefon Zaten Kayıtlı.");
-                metroTextBox1.Text = "";
-                metroTextBox2.Text = "";
-                metroTextBox3.Text = "";
-                metroTextBox4.Text = "";
+                SSmetroTextBox1.Text = "";
+                SSmetroTextBox2.Text = "";
+                SSmetroTextBox3.Text = "";
+                SSmetroTextBox4.Text = "";
             }
 
-            else if (string.IsNullOrEmpty(metroTextBox1.Text) || string.IsNullOrEmpty(metroTextBox2.Text) || string.IsNullOrEmpty(metroTextBox3.Text) || string.IsNullOrEmpty(metroTextBox4.Text))
+            else if (string.IsNullOrEmpty(SSmetroTextBox1.Text) || string.IsNullOrEmpty(SSmetroTextBox2.Text) || string.IsNullOrEmpty(SSmetroTextBox3.Text) || string.IsNullOrEmpty(SSmetroTextBox4.Text))
             {
                 MessageBox.Show("Tüm alanları doldurunuz.");
             }
@@ -87,10 +87,10 @@ namespace _10019SelahattinSaylam
             {
                 ssrehber_islemi aa = new ssrehber_islemi();
 
-                aa.ssrehber_01_ad_str = metroTextBox1.Text;
-                aa.ssrehber_02_soyad_str = metroTextBox2.Text;
-                aa.ssrehber_03_telefon_str =metroTextBox3.Text;
-                aa.ssrehber_04_tur_str = metroTextBox4.Text;
+                aa.ssrehber_01_ad_str = SSmetroTextBox1.Text;
+                aa.ssrehber_02_soyad_str = SSmetroTextBox2.Text;
+                aa.ssrehber_03_telefon_str =SSmetroTextBox3.Text;
+                aa.ssrehber_04_tur_str = SSmetroTextBox4.Text;
             
 
                 vv02_str_komut_yazisi = "insert into SS_Rehber(" +
@@ -128,30 +128,75 @@ namespace _10019SelahattinSaylam
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            string arama_telno = metroTextBox5.Text;
+             SSmetroListView1.Clear();
+            /* string arama_telno = SSmetroTextBox5.Text;
 
-            vv02_str_komut_yazisi = "select " +
-                "ss_id,"+
-                 "ss_ad," +
-                  "ss_soyad," +
-                  "ss_tel_no," +
-                  "ss_tur" +
+             vv02_str_komut_yazisi = "select " +
+                 "ss_id,"+
+                  "ss_ad," +
+                   "ss_soyad," +
+                   "ss_tel_no," +
+                   "ss_tur" +
 
-                  " from SS_Rehber" +
-                  " where ss_tel_no like'%" + arama_telno + "%' " +
-                  " order by ss_id ";
+                   " from SS_Rehber" +
+                   " where ss_tel_no like'%" + arama_telno + "%' " +
+                   " order by ss_id ";
 
 
-            vv03_con_baglanti1 = new SqlConnection(vv01_str_veritabani_yolu);
-            vv04_cmd_komut1 = new SqlCommand(vv02_str_komut_yazisi, vv03_con_baglanti1);
+             vv03_con_baglanti1 = new SqlConnection(vv01_str_veritabani_yolu);
+             vv04_cmd_komut1 = new SqlCommand(vv02_str_komut_yazisi, vv03_con_baglanti1);
 
-            vv04_cmd_komut1.Parameters.AddWithValue("@ss_tel_no", arama_telno);
+             vv04_cmd_komut1.Parameters.AddWithValue("@ss_tel_no", arama_telno);
 
-            vv06_adp_adaptor1 = new SqlDataAdapter(vv04_cmd_komut1);
-            vv07_tbl_tablo1 = new DataTable();
-            vv06_adp_adaptor1.Fill(vv07_tbl_tablo1);
+             vv06_adp_adaptor1 = new SqlDataAdapter(vv04_cmd_komut1);
+             vv07_tbl_tablo1 = new DataTable();
+             vv06_adp_adaptor1.Fill(vv07_tbl_tablo1);*/
 
            
+            vv04_cmd_komut1 = new SqlCommand(vv02_str_komut_yazisi, vv03_con_baglanti1);
+            vv03_con_baglanti1.Open();
+            vv05_rdr_okuyucu1 = vv04_cmd_komut1.ExecuteReader();
+            while (vv05_rdr_okuyucu1.Read())
+            {
+                ListViewItem li = new ListViewItem();
+                li.Text = vv05_rdr_okuyucu1["ss_id"].ToString();
+                li.SubItems.Add(vv05_rdr_okuyucu1["ss_ad"].ToString());
+                li.SubItems.Add(vv05_rdr_okuyucu1["ss_soyad"].ToString());
+                li.SubItems.Add(vv05_rdr_okuyucu1["ss_tel_no"].ToString());
+                li.SubItems.Add(vv05_rdr_okuyucu1["ss_tur"].ToString());
+                SSmetroListView1.Items.Add(li);
+
+            }
+            vv03_con_baglanti1.Close();
+        }
+
+        private void SSmetroButton3_Click(object sender, EventArgs e)
+        {
+            SSmetroListView1.Columns.Add("ss_id", 60);
+            SSmetroListView1.Columns.Add("ss_ad", 150);
+            SSmetroListView1.Columns.Add("ss_soyad", 150);
+            SSmetroListView1.Columns.Add("ss_tel_no", 150);
+            SSmetroListView1.Columns.Add("ss_tur", 100);
+
+            SSmetroListView1.View = View.Details;
+            SSmetroListView1.GridLines= true;
+
+            ListViewItem item = new ListViewItem();
+
+            vv03_con_baglanti1.Open();
+            vv04_cmd_komut1=new SqlCommand("select * from SS_Rehber", vv03_con_baglanti1);
+            vv05_rdr_okuyucu1 = vv04_cmd_komut1.ExecuteReader();
+
+            while (vv05_rdr_okuyucu1.Read())
+            {
+                item=SSmetroListView1.Items.Add(vv05_rdr_okuyucu1.GetInt32(0).ToString());
+               //item.SubItems.Add(vv05_rdr_okuyucu1.GetInt32(0).ToString());
+                item.SubItems.Add(vv05_rdr_okuyucu1.GetString(1));
+                item.SubItems.Add(vv05_rdr_okuyucu1.GetString(2));
+                item.SubItems.Add(vv05_rdr_okuyucu1.GetString(3));
+                item.SubItems.Add(vv05_rdr_okuyucu1.GetString(4));
+            }
+            vv03_con_baglanti1.Close();
         }
     }
 }
